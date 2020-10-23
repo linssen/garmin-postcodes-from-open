@@ -1,0 +1,16 @@
+version: '3'
+services:
+  python:
+    build:
+      context: .
+      dockerfile: DockerfilePython
+    volumes:
+      - ./download:/usr/src/app/download
+  gpsbabel:
+    build:
+      context: .
+      dockerfile: DockerfileGeo
+    depends_on:
+      - python
+    volumes:
+      - ./download:/usr/src/app/download
